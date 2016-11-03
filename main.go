@@ -10,6 +10,7 @@ import (
 
 var homeTemplate *template.Template
 var contactTemplate *template.Template
+var faqTemplate *template.Template
 
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
@@ -23,7 +24,7 @@ func contact(w http.ResponseWriter, r *http.Request) {
 
 func faq(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	fmt.Fprint(w, "Who is the best person in the world? Pim Trouerbach, thats who")
+	faqTemplate.Execute(w, nil)
 
 }
 
@@ -34,12 +35,16 @@ func notfound(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	var err error
-	homeTemplate, err = template.ParseFiles("views/home.gohtml")
+	homeTemplate, err = template.ParseFiles(
+		"views/home.gohtml",
+		"views/layout/footer.gohtml")
 	if err != nil {
 		panic(err)
 	}
 
-	contactTemplate, err = template.ParseFiles("views/contact.gohtml")
+	contactTemplate, err = template.ParseFiles(
+		"views/contact.gohtml",
+		"views/layout/footer.html")
 	if err != nil {
 		panic(err)
 	}
