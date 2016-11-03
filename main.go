@@ -30,7 +30,7 @@ func faq(w http.ResponseWriter, r *http.Request) {
 
 func notfound(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	fmt.Fprint(w, "404 Bitches ")
+	fmt.Fprint(w, "404 yo ")
 }
 
 func main() {
