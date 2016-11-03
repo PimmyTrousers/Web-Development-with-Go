@@ -37,18 +37,23 @@ func main() {
 	var err error
 	homeTemplate, err = template.ParseFiles(
 		"views/home.gohtml",
-		"views/layout/footer.gohtml")
+		"views/layouts/footer.gohtml")
 	if err != nil {
 		panic(err)
 	}
 
 	contactTemplate, err = template.ParseFiles(
 		"views/contact.gohtml",
-		"views/layout/footer.html")
+		"views/layouts/footer.gohtml")
 	if err != nil {
 		panic(err)
 	}
-
+	faqTemplate, err = template.ParseFiles(
+		"views/faq.gohtml",
+		"views/layouts/footer.gohtml")
+	if err != nil {
+		panic(err)
+	}
 	r := mux.NewRouter()
 	r.HandleFunc("/", home)
 	r.HandleFunc("/contact", contact)
